@@ -1,0 +1,5 @@
+output_dir: "docs"
+rmd_files:
+  - "index.Rmd"
+book_filename: "MyoMinn_Oo_CV"
+delete_merged_file: true
