@@ -1,0 +1,297 @@
+---
+name: Myo Minn
+surname: Oo
+position: "MBBS, PhD"
+address: "B-852 Bannatyne Ave, Winnipeg, R3E0W5, MB, Canada"
+phone: "+1 204 557 9337"
+www: myominnoo.github.io
+email: "dr.myominnoo@gmail.com"
+github: myominnoo
+linkedin: myominnoo
+researchgate: Myo-Minn-Oo
+orcid: 0000-0003-4089-016X
+profilepic: "./img/myominnoo2.jpg"
+date: "`r format(Sys.time(), '%B %Y')`"
+# headcolor: 009ACD # blue
+headcolor: 990000 # crimson red
+aboutme: "I am an epidemiologist with keen interests in infectious diseases in vulnerable populations, global health, and implementation research. I have a deep driven passion for the application of data science, automation, and data products in health research. This very CV was even data-driven and compiled with code"
+output: 
+  vitae::awesomecv:
+    keep_tex: false
+always_allow_html: yes
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+library(tidyverse)
+library(vitae)
+
+# get google scholar citations
+gs_id <- "IWzz0rUAAAAJ"
+pubs <- scholar::get_profile(gs_id)
+```
+
+# Education
+
+```{r EDUCATION}
+readxl::read_excel("data/data.xlsx", sheet = "education-details") %>% 
+  detailed_entries(
+    with = with,
+    what = what,
+    why = why,
+    when = glue::glue("{startMonth} {startYear} -- {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+# Research Interests
+
+::: {.center data-latex=""}
+Infectious Disease Epidemiology (HIV/STI, TB, Malaria), Vulnerable Populations (Sex workers, gbMSM, Migrants), Global Health, Implementation Research, SRHR, MCH, Mental Health
+:::
+
+# Professional Experience
+
+```{r EMPLOYMENT}
+employment <- readxl::read_excel("data/data.xlsx", sheet = "employment")
+employment %>%
+  detailed_entries(
+    with = with,
+    what = what,
+    why = why,
+    when = glue::glue("{startMonth} {startYear} ---- {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Selected Publications
+
+Since 2016, I have authored **`r scholar::get_num_articles(gs_id)` research papers**. Some highlights are listed below, with citations taken from Google Scholar on `r format(Sys.time(), "%e %B %Y")`. My **h-index** is **`r pubs$h_index`** with total citations of `r pubs$total_cites`. 
+
+For a complete list of publications, see [*my Google Scholar profile*](https://scholar.google.com/citations?hl=en&user=IWzz0rUAAAAJ).
+
+```{r SELECTED PUBLICATIONS}
+# Read any bib files
+vitae::bibliography_entries("bib/selected.bib") %>% 
+  mutate(year = lubridate::year(as.Date(issued))) %>% 
+  arrange(-year)
+```
+
+## Books
+
+```{r books}
+# Read any bib files
+vitae::bibliography_entries("bib/books.bib") 
+```
+
+## R packages
+
+```{r RPackages}
+# Read any bib files
+vitae::bibliography_entries("bib/rpackages.bib") 
+```
+
+\pagebreak
+
+# Works in progress
+
+```{r under reviews}
+# Read any bib files
+vitae::bibliography_entries("bib/underreviews.bib")
+```
+
+# Projects
+
+```{r projects}
+vitae::bibliography_entries("bib/projects.bib")
+```
+
+# Programming projects
+
+```{r dev}
+readxl::read_excel("data/data.xlsx", sheet = "programming") %>%  
+  mutate(link = ifelse(is.na(link), link, 
+                       paste0("\\href{", link, "}{\\faLink}")), 
+         github = ifelse(is.na(github), github, 
+                         paste0("\\href{", github, "}{\\faGithub}"))) %>% 
+  detailed_entries(with = sum, what = lang, where = link, 
+                   why = why, when = github, .protect=FALSE)  
+```
+
+# Presentations
+
+```{r presentations}
+readxl::read_excel("data/data.xlsx", sheet = "presentations") %>% 
+  vitae::detailed_entries(what, when, with, where, why)
+```
+
+# Grants, Awards, and Honors
+
+```{r grant}
+readxl::read_excel("data/data.xlsx", sheet = "grants-details") %>% 
+  tidyr::fill(-why) %>%
+  vitae::detailed_entries(what, when, with, where, why)
+```
+
+
+# Teaching
+
+```{r teaching}
+readxl::read_excel("data/data.xlsx", sheet = "teaching") %>% 
+  tidyr::fill(-why) %>%
+  vitae::detailed_entries(what, when, with, where, why)
+```
+
+
+# Skills
+
+```{r skills, results='asis', width = 40000}
+skills_formatted <- readxl::read_excel(
+    "data/data.xlsx", sheet = "skills-details"
+) %>% 
+  mutate(skill = if_else(is.na(details)|details=="", 
+                         glue::glue("{skill}"), 
+                         glue::glue("{skill} ({details})"))) %>% 
+  arrange(group) %>% 
+  group_by(group) %>% 
+  summarize(skills = glue::glue_collapse(skill, sep = " $\\bullet$ "))
+
+for (group in skills_formatted$group) {
+  cat(
+    glue::glue("\\textbf{<<tools::toTitleCase(group)>>}:", .open = "<<", .close = ">>"),
+    filter(skills_formatted, group == !!group)$skills,
+    "\n\n\n"
+  )
+}
+```
+
+
+# Services
+
+```{r services, results='asis', width = 40000}
+skills_formatted <- readxl::read_excel(
+    "data/data.xlsx", sheet = "services"
+) %>% 
+  mutate(skill = if_else(is.na(details)|details=="", 
+                         glue::glue("{skill}"), 
+                         glue::glue("{skill} ({details})"))) %>% 
+  arrange(group) %>% 
+  group_by(group) %>% 
+  summarize(skills = glue::glue_collapse(skill, sep = " $\\bullet$ "))
+
+for (group in skills_formatted$group) {
+  cat(
+    glue::glue("\\textbf{<<tools::toTitleCase(group)>>}:", .open = "<<", .close = ">>"),
+    filter(skills_formatted, group == !!group)$skills,
+    "\n\n\n"
+  )
+}
+```
+
+<!-- \pagebreak -->
+
+# Online Tutorials
+
+1. [Create Publication-Ready Tables using `gtsummary`](https://www.youtube.com/watch?v=kDyzBYx6CVs&list=PLopxIleZRP2auz5v1VjiF68_Urbb_rTFC&ab_channel=DataRecap)
+2. [R Webinars](https://www.youtube.com/watch?v=XJ9iNVYp7R8&list=PLopxIleZRP2aV-dnbkZs2eydbdWD0IXSf&ab_channel=DataRecap)
+3. [Statistics & Public Health Webinars](https://www.youtube.com/watch?v=O7lIWWZTbmI&list=PLopxIleZRP2ZUit_7Ag-PMugAV8dBavYA&ab_channel=DataRecap)
+4. [Git & GitHub Basics](https://www.youtube.com/watch?v=JEuMqcPdJRo&list=PLopxIleZRP2agpuMKrbwEyYMSi9jhjUo4&ab_channel=DataRecap)
+5. [Making infographics using MS PowerPoint](https://www.youtube.com/watch?v=Zzs9epH_AK8&list=PLopxIleZRP2bdEAV3eureiDo5etA_AR9k&ab_channel=DataRecap)
+6. [Data entry using EpiData Manager & EntryClient](https://www.youtube.com/watch?v=WEKBQGcndoc&list=PLopxIleZRP2Zr8t4HmB1vy-vZQht0BBdM&ab_channel=DataRecap)
+7. [Introdution to R and RStudio](https://www.youtube.com/watch?v=q9LJsymvb_g&list=PLopxIleZRP2bdEXiq5Zzv8HhTiYsUgdYb&ab_channel=DataRecap)
+8. [Statistics with R - ENGLISH Version](https://www.youtube.com/watch?v=S-RTBqP7O7o&list=PLopxIleZRP2b8peVo5K8KuCo5Yo_yk4Is&ab_channel=DataRecap)
+9. [Statistics with R - MYANMAR Version](https://www.youtube.com/watch?v=LR9b0rWh7GU&list=PLopxIleZRP2YZ-B5gAuxARnoleZMeXyjk&ab_channel=DataRecap)
+
+
+# Charting the Course: Reflecting on My Journey Thus Far
+
+```{r JOURNEY, fig.align='center', fig.width=6.5, fig.height=2.7, fig.showtext=TRUE}
+emojifont::load.fontawesome()
+uni <- emojifont::fontawesome('fa-university')
+work <- emojifont::fontawesome('fa-briefcase')
+vacation <- emojifont::fontawesome('fa-plane')
+
+world <- rnaturalearth::ne_countries("medium", returnclass = 'sf')
+cities_geom <- sf::st_sfc(
+  sf::st_point(c(95, 23)),
+  sf::st_point(c(85, 27)),
+  sf::st_point(c(78, 25)),
+  sf::st_point(c(81, 7)),
+  sf::st_point(c(100, 17)),
+  sf::st_point(c(105, 17)),
+  sf::st_point(c(120, 32)),
+  sf::st_point(c(105, 2)),
+  sf::st_point(c(110, -7)),
+  sf::st_point(c(10, 47)),
+  sf::st_point(c(144, -6)), 
+  sf::st_point(c(120, 17)),
+  sf::st_point(c(38, 1)), 
+  sf::st_point(c(-90, 50.5))
+) 
+cities = sf::st_sf(
+  geometry = cities_geom
+) |>
+  sf::st_set_crs(4326) |>
+  mutate(
+    label = c(
+      paste(work, uni, sep = " "),
+      rep(work, 3), 
+      uni, 
+      vacation, 
+      vacation, 
+      vacation, 
+      vacation, 
+      work, 
+      work, 
+      vacation, 
+      work, 
+      work
+    )
+  )
+
+routes = cities |> 
+  sfnetworks::as_sfnetwork() |> 
+  sf::st_as_sf('edges') |> 
+  sf::st_segmentize(units::set_units(100, m))
+ggplot() +
+  geom_sf(data = world, color = 'white', lwd = 0.1) +
+  geom_sf_text(
+    data = cities,
+    aes(label = label),
+    size = 2.5,
+    # color = '#009ACD',
+    color = '#990000',
+    family = "fontawesome-webfont"
+  ) +
+  geom_sf(
+    data = routes,
+    # color = '#009ACD',
+    color = '#990000',
+    size = 0.5, alpha = 0.5,
+    linetype = 'dotted'
+  ) +
+  coord_sf(
+    crs = '+proj=robin',
+    xlim = c(-9e6, 13e6),
+    ylim = c(-4e6, 7e6)
+  ) +
+  theme_void() +
+  theme(
+    plot.margin = margin(-1, 0, -0.5, 0, "cm")
+  )
+```
+This figure is created using the packages, `rnaturalearth`, `sf`, `sfnetworks`, `emojifont`, and `ggplot2`.
+
+# References 
+
+Available on request.
+
+# Note
+
+This document is written in `rmarkdown` and generated using `vitae` package and `awesome-cv` template. All the source code behind this `CV` is available on this \href{https://github.com/myominnoo/CV}{GitHub repo}.
+
