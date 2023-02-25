@@ -52,7 +52,7 @@ readxl::read_excel("data/data.xlsx", sheet = "education-details") %>%
 # Research Interests
 
 ::: {.center data-latex=""}
-Infectious Disease Epidemiology (HIV/STI, TB, Malaria), Vulnerable Populations (Sex workers, gbMSM, Migrants), Global Health, Implementation Research, SRHR, MCH, Mental Health
+Epidemiology, Global Health, Health Service Research, Implementation Research, Vulnerable Populations (Sex workers, gbMSM, Migrants), Infectious Disease (HIV/STI, TB, Malaria), SRHR, MCH, Mental Health
 :::
 
 # Professional Experience
