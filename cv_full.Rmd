@@ -14,7 +14,7 @@ profilepic: "./img/myominnoo2.jpg"
 date: "`r format(Sys.time(), '%B %Y')`"
 # headcolor: 009ACD # blue
 headcolor: 990000 # crimson red
-aboutme: "I am an epidemiologist with keen interests in infectious diseases in vulnerable populations, global health, and implementation research. I have a deep driven passion for the application of data science, automation, and data products in health research. This very CV was even data-driven and compiled with code"
+aboutme: "As an epidemiologist, I am passionate about global health, addressing health disparities in underserved populations, and conducting implementation research. I am particularly interested in applying data science, automation, and data products to real-world health research challenges. In fact, even this CV was compiled using code and a data-driven approach."
 output: 
   vitae::awesomecv:
     keep_tex: false
@@ -52,7 +52,7 @@ readxl::read_excel("data/data.xlsx", sheet = "education-details") %>%
 # Research Interests
 
 ::: {.center data-latex=""}
-Epidemiology, Global Health, Health Service Research, Implementation Research, Vulnerable Populations (Sex workers, gbMSM, Migrants), Infectious Disease (HIV/STI, TB, Malaria), SRHR, MCH, Mental Health
+Epidemiology, Global Health, Health Service Research, Implementation Science, Underserved Populations (Sex workers, gbMSM, Migrants), Infectious Diseases (HIV/STI, TB, Malaria), SRHR, MCH, Mental Health
 :::
 
 # Professional Experience
@@ -68,6 +68,16 @@ employment %>%
     where = where
   )
 ```
+
+# Grants, Awards, and Honors
+
+```{r grant}
+readxl::read_excel("data/data.xlsx", sheet = "grants-details") %>% 
+  tidyr::fill(-why) %>%
+  vitae::detailed_entries(what, when, with, where, why)
+```
+
+<!-- \pagebreak -->
 
 # Selected Publications
 
@@ -96,7 +106,6 @@ vitae::bibliography_entries("bib/books.bib")
 vitae::bibliography_entries("bib/rpackages.bib") 
 ```
 
-\pagebreak
 
 # Works in progress
 
@@ -111,7 +120,7 @@ vitae::bibliography_entries("bib/underreviews.bib")
 vitae::bibliography_entries("bib/projects.bib")
 ```
 
-# Programming projects
+# Data Science Products
 
 ```{r dev}
 readxl::read_excel("data/data.xlsx", sheet = "programming") %>%  
@@ -130,21 +139,33 @@ readxl::read_excel("data/data.xlsx", sheet = "presentations") %>%
   vitae::detailed_entries(what, when, with, where, why)
 ```
 
-# Grants, Awards, and Honors
-
-```{r grant}
-readxl::read_excel("data/data.xlsx", sheet = "grants-details") %>% 
-  tidyr::fill(-why) %>%
-  vitae::detailed_entries(what, when, with, where, why)
-```
-
-
 # Teaching
 
 ```{r teaching}
 readxl::read_excel("data/data.xlsx", sheet = "teaching") %>% 
   tidyr::fill(-why) %>%
   vitae::detailed_entries(what, when, with, where, why)
+```
+
+# Services & Outreach
+
+```{r services, results='asis', width = 40000}
+skills_formatted <- readxl::read_excel(
+    "data/data.xlsx", sheet = "services"
+) %>% 
+  mutate(skill = if_else(is.na(details)|details=="", 
+                         glue::glue("{skill}"), 
+                         glue::glue("{skill} ({details})"))) %>% 
+  group_by(group) %>% 
+  summarize(skills = glue::glue_collapse(skill, sep = " $\\bullet$ "))
+
+for (group in skills_formatted$group) {
+  cat(
+    glue::glue("\\textbf{<<tools::toTitleCase(group)>>}:", .open = "<<", .close = ">>"),
+    filter(skills_formatted, group == !!group)$skills,
+    "\n\n\n"
+  )
+}
 ```
 
 
@@ -170,28 +191,6 @@ for (group in skills_formatted$group) {
 }
 ```
 
-
-# Services
-
-```{r services, results='asis', width = 40000}
-skills_formatted <- readxl::read_excel(
-    "data/data.xlsx", sheet = "services"
-) %>% 
-  mutate(skill = if_else(is.na(details)|details=="", 
-                         glue::glue("{skill}"), 
-                         glue::glue("{skill} ({details})"))) %>% 
-  arrange(group) %>% 
-  group_by(group) %>% 
-  summarize(skills = glue::glue_collapse(skill, sep = " $\\bullet$ "))
-
-for (group in skills_formatted$group) {
-  cat(
-    glue::glue("\\textbf{<<tools::toTitleCase(group)>>}:", .open = "<<", .close = ">>"),
-    filter(skills_formatted, group == !!group)$skills,
-    "\n\n\n"
-  )
-}
-```
 
 <!-- \pagebreak -->
 
@@ -289,7 +288,17 @@ This figure is created using the packages, `rnaturalearth`, `sf`, `sfnetworks`, 
 
 # References 
 
-Available on request.
+```{r REFERENCES}
+readxl::read_excel("data/data.xlsx", sheet = "references") %>% 
+  detailed_entries(
+    with = with,
+    what = what,
+    why = why,
+    when = when,
+    where = where
+  )
+
+```
 
 # Note
 
