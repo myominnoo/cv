@@ -17,6 +17,7 @@ headcolor: 990000 # crimson red
 aboutme: "As an epidemiologist, I am passionate about global health, addressing health disparities in underserved populations, and conducting implementation research. I am particularly interested in applying data science, automation, and data products to real-world health research challenges. In fact, even this CV was compiled using code and a data-driven approach."
 output: 
   vitae::awesomecv:
+    page_total: true
     keep_tex: false
 always_allow_html: yes
 editor_options:
