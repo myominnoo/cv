@@ -3,7 +3,7 @@ name: Myo Minn
 surname: Oo
 position: "MBBS, PhD"
 address: "B-852 Bannatyne Ave, Winnipeg, R3E0W5, MB, Canada"
-phone: "+1 204 557 9337"
+phone: "+1(204)557-9337"
 www: myominnoo.github.io
 email: "dr.myominnoo@gmail.com"
 github: myominnoo
@@ -53,7 +53,7 @@ readxl::read_excel("data/data.xlsx", sheet = "education-details") %>%
 # Research Interests
 
 ::: {.center data-latex=""}
-Epidemiology, Global Health, Health Service Research, Implementation Science, Underserved Populations (Sex workers, gbMSM, Migrants), Infectious Diseases (HIV/STI, TB, Malaria), SRHR, MCH, Mental Health
+Infectious Disease Epidemiology, Global Health, Underserved Populations (Sex workers, gbMSM, Migrants), Health Service Research, Applied data science in health, HIV/STI, TB, Malaria.
 :::
 
 # Professional Experience
