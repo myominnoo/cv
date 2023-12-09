@@ -4,13 +4,13 @@ surname: Oo
 position: "MBBS, PhD"
 address: "B-852 Bannatyne Ave, Winnipeg, R3E0W5, MB, Canada"
 phone: "+1(204)557-9337"
-www: myominnoo.github.io
+www: myominnoo.com
 email: "dr.myominnoo@gmail.com"
 github: myominnoo
 linkedin: myominnoo
 researchgate: Myo-Minn-Oo
 orcid: 0000-0003-4089-016X
-profilepic: "./img/myominnoo2.jpg"
+profilepic: "./img/myominnoo.png"
 date: "`r format(Sys.time(), '%B %Y')`"
 # headcolor: 009ACD # blue
 headcolor: 990000 # crimson red
