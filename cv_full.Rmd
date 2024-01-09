@@ -53,7 +53,7 @@ readxl::read_excel("data/data.xlsx", sheet = "education-details") %>%
 # Research Interests
 
 ::: {.center data-latex=""}
-Infectious Disease Epidemiology, Global Health, Underserved Populations (Sex workers, gbMSM, Migrants), Health Service Research, Applied data science in health, HIV/STI, TB, Malaria.
+Underserved Populations (Sex workers, gbMSM, Migrants, Indigenous Peoples), Infectious Disease Epidemiology, TB, STBBI, Global Health, Health Service Research, Applied data science in health.
 :::
 
 # Professional Experience
