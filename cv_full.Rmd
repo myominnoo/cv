@@ -2,19 +2,20 @@
 name: Myo Minn
 surname: Oo
 position: "MBBS, PhD"
-address: "B-852 Bannatyne Ave, Winnipeg, R3E0W5, MB, Canada"
-phone: "+1(204)557-9337"
+# address: "B-852 Bannatyne Ave, Winnipeg, R3E0W5, MB, Canada"
+address: "S303, 35 Rolling Mills Rd, Toronto, M5A 0V6, ON, CA"
+phone: "+1 (437) 580-8121"
 www: myominnoo.com
 email: "dr.myominnoo@gmail.com"
 github: myominnoo
 linkedin: myominnoo
 researchgate: Myo-Minn-Oo
 orcid: 0000-0003-4089-016X
-profilepic: "./img/myominnoo.png"
+profilepic: "./img/myominnoo.jpg"
 date: "`r format(Sys.time(), '%B %Y')`"
 # headcolor: 009ACD # blue
 headcolor: 990000 # crimson red
-aboutme: "As an epidemiologist, I am passionate about global health, addressing health disparities in underserved populations, and conducting implementation research. I am particularly interested in applying data science, automation, and data products to real-world health research challenges. In fact, even this CV was compiled using code and a data-driven approach."
+aboutme: "As an epidemiologist, I'm dedicated to global health and implementation science, focusing on reducing health disparities in underserved communities. I specialize in data science and automation to tackle real-world health challenges. Even this CV was compiled using code and a data-driven approach."
 output: 
   vitae::awesomecv:
     page_total: true
@@ -53,7 +54,7 @@ readxl::read_excel("data/data.xlsx", sheet = "education-details") %>%
 # Research Interests
 
 ::: {.center data-latex=""}
-Infectious Disease Epidemiology, Global Health, Underserved Populations (Sex workers, gbMSM, Migrants), Health Service Research, Applied data science in health, HIV/STI, TB, Malaria.
+Infectious Diseases (HIV/STBBI, TB, Malaria), Implementation Science, Health Service Research, Underserved Populations (Sex workers, gbMSM, Migrants, Indigenous Peoples).
 :::
 
 # Professional Experience
