@@ -8,4 +8,4 @@ This repository contains the source files used to build my CV with my
 <https://github.com/ropenscilabs/vitae>
 
 
-[Click here](https://myominnoo.github.io/) to go to my website. 
+[Click here](https://myominnoo.com/) to go to my website. 
