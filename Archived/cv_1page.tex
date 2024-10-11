@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Twenty Seconds Resume/CV
+% LaTeX Template
+% Version 1.1 (8/1/17)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% Adapted to be an Rmarkdown template by Rob J Hyndman
+% 23 November 2018
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,a4paper,]{twentysecondcv}
+
+\usepackage[scaled=0.86]{DejaVuSansMono}
+
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{csquotes}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+\usepackage{booktabs}
+
+
+
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+
+% Profile pic
+\profilepic{./img/myominnoo.jpg}
+
+\cvname{Myo Minn Oo} % Your name
+
+\cvjobtitle{Post-doctoral Fellow} % Job title/career
+\cvdate{November 2023} % Date of birth or date of CV??
+\cvaddress{Department of Medical Microbiology and Infectious Diseases,
+University of Manitoba, Winnipeg,
+Canada} % Short address/location, use \newline if more than 1 line is required
+\cvpronouns{} % Pronouns
+\cvnumberphone{+1 204 557 9337} % Phone number
+\cvsite{\href{http://myominnoo.github.io}{myominnoo.github.io}} % Personal website
+\cvmail{\href{mailto:dr.myominnoo@gmail.com}{\nolinkurl{dr.myominnoo@gmail.com}}} % Email address
+\cvtwitter{}
+\cvgithub{\href{https://github.com/myominnoo}{myominnoo}}
+\cvlinkedin{\href{https://www.linkedin.com/in/myominnoo}{myominnoo}}
+\cvorcid{}
+\cvscholar{}
+\cvresearchgate{}
+
+\lfoot{\sf Resume: Myo Minn Oo}
+\rfoot{\sf\thepage}
+
+% Pandoc CSL macros
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\begin{document}
+\aboutme{Myo is an epidemiologist with a medical background,
+specializing in global health and implementation research to better
+comprehend infectious diseases among vulnerable populations. Since 2016,
+I have published 30+ peer-reviewed papers in the fields of infectious
+disease epidemiology, with a focus on TB, HIV, and malaria in developing
+countries including Myanmar, Thailand, Bhutan, Nepal, and China. I also
+serve as an academic editor for PLoS ONE and as an associate editor for
+Public Health Challenges Journal (Wiley) while also participating as a
+scientific reviewer for several scientific journals. My current
+interests revolve around understanding infectious disease epidemiology,
+diseaes burdens, and transmission dynamics among vulnerable populations,
+not limited to migrants, sex workers, and gbMSM.}
+
+% Skill bar section, each skill must have a value between 0 an 6 (float)
+%\skills{{pursuer of rabbits/5.8},{good manners/4},{outgoing/4.3},{polite/4},{Java/0.01}}
+
+% Skill text section, each skill must have a value between 0 an 6
+%\skillstext{{lovely/4},{narcissistic/3}}
+
+\makeprofile % Print the sidebar
+
+
+
+
+\hypertarget{positions}{%
+\section{Positions}\label{positions}}
+
+\nopagebreak
+
+\begin{twenty}
+    \twentyitem{2022}{Post-doctoral Fellow}{University of Manitoba}{Winnipeg, Canada\par\empty}
+    \twentyitem{2021-22}{Postdoctoral Scientific Collaborator}{Swiss Tropical and Public Health Institute}{Basel, Switzerland\par\empty}
+    \twentyitem{2021-22}{Senior Research Fellow}{PNG Institute of Medical Research}{Goroka, Papua New Guinea\par\empty}
+    \twentyitem{2018-21}{Doctorate Student}{Prince of Songkla University}{Hat Yai, Thailand\par\empty}
+    \twentyitem{2016-18}{Research Fellow \& Technical Aide}{The Union}{Mandalay, Myanmar\par\empty}
+    \twentyitem{2015-16}{Monitoring \& Evaluation Manager}{The Union}{Mandalay, Myanmar\par\empty}
+    \twentyitem{2014-15}{Medical Officer}{The Union}{Mandalay, Myanmar\par\empty}
+\end{twenty}
+
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\nopagebreak
+
+\begin{twenty}
+    \twentyitem{2018-22}{PhD, Epidemiology}{Prince of Songkla University, Thailand}{\empty\empty}
+    \twentyitem{2007-12}{MBBS}{University of Medicine, Myanmar}{\empty\empty}
+\end{twenty}
+
+\hypertarget{grants-awards-honors}{%
+\section{Grants, Awards, \& Honors}\label{grants-awards-honors}}
+
+\nopagebreak
+
+\begin{twenty}
+    \twentyitem{2018-21}{Doctoral Scholarship (3 years)}{TEH-AC, Thailand}{\empty\empty}
+    \twentyitem{2019-21}{Research sub-Grant \$4K USD}{NIH US}{\empty\empty}
+    \twentyitem{2019-21}{Research Grant \$20K USD}{HSRI, Thailand}{\empty\empty}
+    \twentyitem{2019}{Best Oral Presentation Award}{13th IPGFHSP, Indonesia}{\empty\empty}
+\end{twenty}
+
+\hypertarget{academic-contributions-mentorship}{%
+\section{Academic Contributions \&
+Mentorship}\label{academic-contributions-mentorship}}
+
+\nopagebreak
+
+\begin{twenty}
+    \twentyitem{2022-Present}{Academic Editor}{PLoS ONE}{\empty\empty}
+    \twentyitem{2021-Present}{Associate Editor}{Public Health Challenges, Wiley}{\empty\empty}
+    \twentyitem{2016-2022}{IAS conferences}{Abstract Mentorship}{\empty\empty}
+    \twentyitem{2016-18}{COR, The Union}{Research Fellowship}{\empty\empty}
+    \twentyitem{2016-18}{SORT-IT Courses}{Research Mentorship}{\empty\empty}
+\end{twenty}
+
+\hypertarget{skills}{%
+\section{Skills}\label{skills}}
+
+\nopagebreak
+
+\begin{twenty}
+    \twentyitem{}{Statistical modelling, Reproducible research, Software development, R, Shiny, Git, Docker, SQL, BASH, Web hosting}{}{\empty\empty}
+\end{twenty}
+
+\hypertarget{research-themes}{%
+\section{Research themes}\label{research-themes}}
+
+\nopagebreak
+
+\begin{twenty}
+    \twentyitem{}{Vulnerable populations (migrants, sex workers, gbMSM), HIV/STI, TB, Malaria, Migrant health, Implementation Research, Health Interventions, Maternal and child mortality}{}{\empty\empty}
+\end{twenty}
+
+This document is written in rmarkdown using the package \texttt{vitae}
+and the theme \texttt{twentyseconds}. See source codes
+\href{https://github.com/myominnoo/cv}{here}.
+
+
+\end{document}
