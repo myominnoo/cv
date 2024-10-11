@@ -197,6 +197,4 @@ readxl::read_excel("data/main-data.xlsx", sheet = "references") |>
 
 # Note
 
-This document is written in `rmarkdown` and generated using `vitae` package and `awesome-cv` template. All the source code behind this `CV` is available on this \href{https://github.com/myominnoo/CV}{GitHub repo}.
-
-
+This CV is written in `RMarkdown` and generated using the `vitae` package with the `awesome-cv` template. The complete source code is available on my \href{https://github.com/myominnoo/CV}{GitHub repository}.
