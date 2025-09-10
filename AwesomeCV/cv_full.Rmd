@@ -14,7 +14,7 @@ orcid: 0000-0003-4089-016X
 profilepic: "data/myominnoo.jpg"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 headcolor: 990000 # crimson red
-aboutme: "Experienced epidemiologist specializing in HIV/STBBI research, using advanced biostatistics and data science to address health inequities. Skilled in R programming and data product development, seeking to apply expertise in an inclusive academic role."
+aboutme: "An Epidemiologist, Implementation Scientist, Health Researcher with expertise in STBBI/HIV research, using advanced biostatistics and data science to address health inequities in underserved populations. Skilled in R programming and data product development."
 output: 
   vitae::awesomecv:
     page_total: true
@@ -36,6 +36,7 @@ pubs <- scholar::get_profile(gs_id)
 ```
 
 
+
 # Education
 
 ```{r}
@@ -47,10 +48,10 @@ readxl::read_excel("data/main-data.xlsx", sheet = "education") |>
 # Research Interests
 
 ::: {.center data-latex=""}
-Infectious Diseases (HIV/STBBI, TB, Malaria), Implementation Science, Health Services Research, Underserved Populations (Sex workers, gbMSM, Migrants, Indigenous Peoples).
+Global Health, Implementation Science, Health Services Research, Data Science, STBBI/HIV, TB, Malaria, Underserved Populations (Sex workers, gbMSM, Migrants, Indigenous Peoples).
 :::
 
-# Research Experiences
+# Work/Research Experiences
 
 ```{r}
 readxl::read_excel("data/main-data.xlsx", sheet = "employment") |> 
@@ -66,6 +67,7 @@ readxl::read_excel("data/main-data.xlsx", sheet = "grants") %>%
   vitae::detailed_entries(what, when, with, where, why)
 ```
 
+
 # Publications
 
 Since 2016, I have authored **`r scholar::get_num_articles(gs_id)` peer-reviewed articles**. As of `r format(Sys.time(), "%e %B %Y")`, my work has an **h-index** of **`r pubs$h_index`** and a total of `r pubs$total_cites` citations, according to Google Scholar. See [*my Google Scholar profile*](https://scholar.google.com/citations?hl=en&user=IWzz0rUAAAAJ).
@@ -73,7 +75,9 @@ Since 2016, I have authored **`r scholar::get_num_articles(gs_id)` peer-reviewed
 ## Peer-reviewed articles
 
 ```{r}
-bibliography_entries("data/publications.bib")
+bibliography_entries("data/publications.bib") |> 
+    dplyr::mutate(year = lubridate::year(as.Date(issued))) |> 
+    dplyr::arrange(desc(year))
 ```
 
 ## Submitted
@@ -86,6 +90,7 @@ bibliography_entries("data/publications_submitted.bib")
 ```{r}
 vitae::bibliography_entries("data/books.bib") 
 ```
+
 
 
 # Data Projects
