@@ -3,7 +3,7 @@ name: Myo Minn
 surname: Oo
 position: "MBBS, Ph.D."
 pronouns: he/him
-address: "100-Lotherton Pathway, North York, ON M6B 2G8, Canada"
+address: "330 Ravelston Ave West, Winnipeg, MB R2C 1W2, Canada"
 phone: "+1 (437) 580-8121"
 www: myominnoo.com
 email: "dr.myominnoo@gmail.com"
@@ -14,7 +14,7 @@ orcid: 0000-0003-4089-016X
 profilepic: "data/myominnoo.jpg"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 headcolor: 990000 # crimson red
-aboutme: "An Epidemiologist, Implementation Scientist, Health Researcher with expertise in STBBI/HIV research, using advanced biostatistics and data science to address health inequities in underserved populations. Skilled in R programming and data product development."
+aboutme: "An Epidemiologist, Implementation Scientist, Global Health Researcher with expertise in STBBI/HIV, underserved populations, health equity gaps through robust methodogical frameworks and ethical lens. Skilled in R programming and data product development."
 output: 
   vitae::awesomecv:
     page_total: true
@@ -35,6 +35,10 @@ pubs <- scholar::get_profile(gs_id)
 
 ```
 
+# Research Interests
+
+::: {.center data-latex=""}
+STBBI/HIV (in Sex workers, gbMSM), Implementation Science, Health Services Research (in Underserved Populations - Migrants, Indigenous Peoples), Global Health System, Data Science, HEOR.
 
 
 # Education
@@ -45,10 +49,6 @@ readxl::read_excel("data/main-data.xlsx", sheet = "education") |>
   detailed_entries(what, when, with, where, why)
 ```
 
-# Research Interests
-
-::: {.center data-latex=""}
-Global Health, Implementation Science, Health Services Research, Data Science, STBBI/HIV, TB, Malaria, Underserved Populations (Sex workers, gbMSM, Migrants, Indigenous Peoples).
 :::
 
 # Work/Research Experiences
