@@ -66,7 +66,8 @@ RUN sudo apt update && apt-get install -y --no-install-recommends \
     && command sudo add-apt-repository -y ppa:deadsnakes/ppa \
     && sudo apt update 
 
-RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O /tmp/miniconda.sh \
+RUN ARCH=$(uname -m) \
+    && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${ARCH}.sh -O /tmp/miniconda.sh \
     && /bin/bash /tmp/miniconda.sh -b -p /opt/conda \
     && export PATH=/opt/conda/bin:$PATH \
     && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main \

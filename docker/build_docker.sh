@@ -2,7 +2,8 @@
 
 echo "Build the docker"
 
-docker build . --progress=plain \
+docker buildx build . --progress=plain \
+               --platform linux/amd64,linux/arm64 \
                --build-arg QUARTO_VERSION=1.2.335 \
                --build-arg CONDA_ENV=flex_dashboard \
                --build-arg PYTHON_VER=3.8 \
