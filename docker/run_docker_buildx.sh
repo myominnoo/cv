@@ -7,3 +7,4 @@ docker buildx build \
   --platform linux/amd64,linux/arm64 \
   -t myominnoo/cv:dev.0.0.0.9000 \
   --push \
+  ./docker
