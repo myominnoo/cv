@@ -1,0 +1,64 @@
+---
+name: Myo Minn
+surname: Oo
+position: "MBBS, Ph.D."
+pronouns: he/him
+# profilepic: "data/myominnoo.jpg"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+address: "Victoria West, Winnipeg, Canada"
+phone: "+1 (437) 580-8121"
+www: myominnoo.com
+email: "dr.myominnoo@gmail.com"
+github: myominnoo
+linkedin: myominnoo
+researchgate: Myo-Minn-Oo
+orcid: 0000-0003-4089-016X
+headcolor: 990000 # crimson red
+aboutme: "An Epidemiologist, Implementation Scientist, Global Health Researcher with expertise in STBBI/HIV, underserved populations, health equity gaps through robust methodogical frameworks and ethical lens. Skilled in R programming and data product development."
+output: 
+  vitae::awesomecv:
+    page_total: true
+    keep_tex: false
+always_allow_html: yes
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(scholar)
+
+googlesheets4::gs4_deauth()
+gs_id <- "1fwnhAp9JLRLq-zeSq6VzF23VVCOYFydPjTwSR_Z3n5A"
+```
+
+# Research Interests
+
+::: {.center data-latex=""}
+```{r, echo=FALSE, results='asis'}
+# 1. Fetch and clean the data
+keywords_text <- 
+  googlesheets4::read_sheet(ss = gs_id, sheet = "keywords") |> 
+  unlist() |> 
+  paste0(collapse = ", ")
+
+# 2. Use cat to write it directly into the LaTeX stream
+cat(keywords_text)
+```
+:::
+
+# Education
+
+```{r}
+googlesheets4::read_sheet(ss = gs_id, sheet = "education") |> 
+  vitae::detailed_entries(what, when, with, where, why)
+```
+
+
+
+
+# Note
+
+This CV is written in `RMarkdown` and generated using the `vitae` package with the `awesome-cv` template. The complete source code is available on my \href{https://github.com/myominnoo/CV}{GitHub repository}.

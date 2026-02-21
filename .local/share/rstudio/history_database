@@ -1,0 +1,7 @@
+0:devtools::install_github("ropensci/rnaturalearth")
+0:devtools::install_github("ropensci/rnaturalearthdata")
+0:devtools::install_github("ropensci/rnaturalearthhires")
+0:install.packages(c("abind", "av", "BiocManager", "bit", "bit64", "bitops", "boot", "broom", "bslib", "car", "cards", "caTools", "colorspace", "commonmark", "corrplot", "cpp11", "credentials", "data.table", "datawizard", "Deriv", "digest", "doBy", "dotCall64", "evaluate", "fastDummies", "fitdistrplus", "FNN", "future", "gdtools", "gert", "ggrepel", "glue", "gplots", "gt", "gtsummary", "httr2", "insight", "magick", "matrixStats", "microbenchmark", "minqa", "nlme", "officer", "pagedown", "parallelly", "parameters", "patchwork", "performance", "pkgdown", "polyclip", "profvis", "ps", "ragg", "RANN", "RcppArmadillo", "RcppEigen", "reactR", "renv", "reticulate", "rio", "rmarkdown", "RSpectra", "see", "servr", "sf", "shiny", "shinydashboardPlus", "shinyWidgets", "spam", "SparseM", "spatstat.explore", "spatstat.geom", "spatstat.random", "spatstat.utils", "tinytex", "usethis", "uuid", "V8", "waldo", "websocket", "withr", "wk", "writexl", "xfun", "yaml"))
+0:install.packages("golem")
+0:install.packages("bs4Dash")
+0:install.packages(c("bayestestR", "bookdown", "corrplot", "gert", "igraph", "Matrix", "parameters", "performance", "quantreg", "rstudioapi", "spatstat.explore", "terra"))
