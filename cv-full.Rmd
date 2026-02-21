@@ -28,7 +28,6 @@ editor_options:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(vitae)
-library(scholar)
 
 googlesheets4::gs4_deauth()
 gs_id <- "1fwnhAp9JLRLq-zeSq6VzF23VVCOYFydPjTwSR_Z3n5A"
