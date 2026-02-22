@@ -1,22 +1,10 @@
 # Pulling Rocker image with RStudio and R version 4.2
 FROM rocker/rstudio:4.5
 
-# Setting environment variables
-ARG CONDA_ENV=flex_dashboard
-ENV CONDA_ENV=$CONDA_ENV
-
-ARG PYTHON_VER=3.8
-ENV PYTHON_VER=$PYTHON_VER
-
-ARG QUARTO_VERSION=1.2.335
-ENV QUARTO_VERSION=$QUARTO_VERSION
-
 # Disabling the authentication step
 ENV USER="rstudio"
 CMD ["/usr/lib/rstudio-server/bin/rserver", "--server-daemonize", "0", "--auth-none", "1"]
 
-# Install jq to parse json files
-# Layer 6
 RUN apt-get update && apt-get install -y --no-install-recommends \
     jq \
     libxml2-dev \
@@ -32,6 +20,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libfribidi-dev \
     libharfbuzz-dev \
     libfontconfig1-dev \
+    libfreetype6-dev \
+    libcurl4-openssl-dev \
     git \
     vim \
     libgl1 \
@@ -44,45 +34,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxi6 \
     libxtst6 \
     gpg-agent \
+    texlive-latex-base \
+    texlive-latex-recommended \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    lmodern \
     && rm -rf /var/lib/apt/lists/*
 
 # installing R packages
-# Layer 7
 RUN mkdir packages 
-# Layer 9-12
 COPY install_packages.R packages/
-COPY install_python.R packages/
 COPY packages.json packages/
-RUN Rscript packages/install_packages.R
+# RUN Rscript packages/install_packages.R
 
-# Installing Quarto
-COPY install_quarto.sh packages/
-RUN  bash packages/install_quarto.sh $QUARTO_VERSION
-
-
-# Install miniconda
-RUN sudo apt update && apt-get install -y --no-install-recommends \
-    software-properties-common \
-    && command sudo add-apt-repository -y ppa:deadsnakes/ppa \
-    && sudo apt update 
-
-RUN ARCH=$(uname -m) \
-    && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${ARCH}.sh -O /tmp/miniconda.sh \
-    && /bin/bash /tmp/miniconda.sh -b -p /opt/conda \
-    && export PATH=/opt/conda/bin:$PATH \
-    && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main \
-    && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r \
-    && conda init bash \
-    && conda install -y -c conda-forge conda-build
-
-# Set environment
-RUN . /root/.bashrc \
-    && conda create -y --name $CONDA_ENV python=$PYTHON_VER 
-
-RUN echo "conda activate $CONDA_ENV" >> ~/.bashrc
-RUN Rscript packages/install_python.R
-
-# Add Rprofile with VScode settings
-# COPY .Rprofile ~/
+# Install additional R packages
+RUN Rscript -e "install.packages(c('vitae', 'scholar', 'googlesheets4'), repos = 'http://cran.rstudio.com/')"
 
 EXPOSE 8787

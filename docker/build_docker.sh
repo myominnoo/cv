@@ -1,17 +1,12 @@
 #!/bin/bash
-
 echo "Build the docker"
-
-docker buildx build . --progress=plain \
-               --platform linux/amd64,linux/arm64 \
-               --build-arg QUARTO_VERSION=1.2.335 \
-               --build-arg CONDA_ENV=flex_dashboard \
-               --build-arg PYTHON_VER=3.8 \
-               -t myominnoo/cv:dev.0.0.0.9000
-
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  -t myominnoo/cv:dev.0.0.0.9000 \
+  --push \
+  .
 if [[ $? = 0 ]] ; then
-echo "Pushing docker..."
-docker push myominnoo/cv:dev.0.0.0.9000
+  echo "Docker build and push successful"
 else
-echo "Docker build failed"
+  echo "Docker build failed"
 fi
